@@ -144,7 +144,7 @@ public class Operations {
             Double c = entry1.getValue() / (entry1.getKey() + 1) ;
             Integer p = entry1.getKey() + 1;
 
-            result.addM(new Monomial(c,p));
+            result.addM(new Monomial((Math.round(c*100.0)/100.0),p));
         }
 
         return result;
