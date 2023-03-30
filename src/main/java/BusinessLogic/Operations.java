@@ -77,7 +77,6 @@ public class Operations {
     public static Polynomial subtractionP(Polynomial p1, Polynomial p2) {
         Polynomial rez = new Polynomial();
         Monomial r = new Monomial(0.0, 0);
-
         for (Map.Entry<Integer, Double> entry1 : p1.getH().entrySet()) {
             //if (entry1 != null) {
             if (p2.getH().get(entry1.getKey()) != null) {
@@ -90,18 +89,14 @@ public class Operations {
                 rez.addM(r);
             }
         }
-        //}
         for (Map.Entry<Integer, Double> entry2 : p2.getH().entrySet()) {
             if (entry2 != null) {
                 if (p1.getH().get(entry2.getKey()) == null) {
                     r.setPower(entry2.getKey());
-                    r.setCoefficient(entry2.getValue());
+                    r.setCoefficient(-entry2.getValue());
                     rez.addM(r);
-                }
-            }
-
+                }}
         }
-
         return rez;
     }
 
@@ -149,7 +144,7 @@ public class Operations {
             Double c = entry1.getValue() / (entry1.getKey() + 1) ;
             Integer p = entry1.getKey() + 1;
 
-            result.addM(new Monomial(Math.round(c * 1000)/1000,p));
+            result.addM(new Monomial(c,p));
         }
 
         return result;
